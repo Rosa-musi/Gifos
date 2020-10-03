@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/71936a9880.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/favoritos.css">
+    <link rel="shortcut icon" href="imagenes/iconos/logo-mobile.svg" type="image/x-icon">
+    <title>GIFOS favoritos</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar" id="navbar-header"> 
+            <div class="navbar-header">
+                <a class="brand-link" href="index.html"><img class="logo" src="imagenes/iconos/logo-desktop.svg" alt="logo"> <img class="logoNoc" src="imagenes/iconos/logo-mobile-modo-noct.svg" alt="logo"> </a>
+                <a href="#navbar-header" class="open-close menu_open"><i class="fas fa-bars"></i></a>
+                <a href="#" class="open-close menu_close"><i class="fas fa-times"></i></a>
+            </div>   
+            <ul class="navbar-container"> 
+                <li><a id="boton_modoNoc" class="navbar-link mod_noc" href="#">Modo Nocturno</a></li> 
+                <li><span class="separador"></span></li>
+                <li><a class="navbar-link fav" href="favoritos.html">Favoritos</a></li>
+                <li><span class="separador"></span></li>
+                <li><a class="navbar-link" href="misGifos.html">Mis GIFOS</a></li>
+                <li><a href="mas.html"><i class="fas fa-plus"></i></a></li>
+            </ul>
+        </nav>  
+    </header>     
+    <main>
+        <section class="favoritos">
+
+            <div  id="favDesplegarID" class="modalF">
+                <div class="container_desplegar">
+                    <img class="closeButton" id="closeF" src="imagenes/iconos/close.svg" alt="">
+                    <img id="img_max" src="imagenes/cat.jpg" alt="cat">
+                    <div class="max_datos">
+                        <p class="max_titulo" id="max_titulo">Titulo GIFO</p>
+                        <div class="max_icons">
+                            <img id="maxFavFav" class="icon_max max_fav" src="imagenes/iconos/icon-fav-active.svg" alt="">
+                            <img id="maxDescFav" class="icon_max max_desc" src="imagenes/iconos/icon-download.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <img class="favoritos_imgCorazon" src="imagenes/iconos/icon-favoritos.svg" alt="corazon">
+            <h2>favoritos</h2>
+            <div id="favoritos_images" class="favoritos_images">
+                <div class="sinContenido">
+                    <img class="iconSinContenido" src="imagenes/iconos/icon-fav-sin-contenido.svg" alt="sin contenido">
+                    <p class="textoSinContenido">"¡Guarda tu primer GIFO en Favoritos <br> para que se muestre aquí!"</p>
+                </div>
+            </div>
+            <button id="verMasFavoritos" class="favoritos_verMas">VER MAS</button>
+            
+        </section>
+        <section class="trendingGifos">
+            <h2>Trending GIFOS</h2>
+            <p class="texto_mobil">Mira los últimos <br> GIFOS de nuestra comunidad.</p>
+            <p class="texto_pc">Mira los últimos GIFOS de nuestra comunidad.</p>
+            <div id='aLlorar2' class="DespCar">
+
+            </div>
+            <div class="carousel">
+                <div id="slider" class="slider">
+                 <!-- contenido del endpoint trending de api giphy -->
+                </div>
+                <i id="prev" class="fas fa-angle-left"></i>
+                <i id="next" class="fas fa-angle-right"></i>
+            </div>
+        </section>
+        <footer>
+            <div class="footer_redes">
+                <p>Compartir en:</p>
+                <div class="icon_redes">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <p class="footer_rights">© GIFOS 2020 All Rights Reserved.</p>
+        </footer>
+    </main> 
+    <script src="scripts/ModoNoc.js"></script>
+    <script src="scripts/FavLocSt.js"></script>
+    <script src="scripts/MostrarFav.js"></script>
+    <script src="scripts/desplegar.js"></script>
+    <script src="scripts/slider.js"></script>
+    <script src="scripts/getTrending.js"></script>
+    <script src="scripts/descarga.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mas.css">
+    <script src="https://kit.fontawesome.com/71936a9880.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="imagenes/iconos/logo-mobile.svg" type="image/x-icon">
+    <title>GIFOS mis gifos</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar" id="navbar-header"> 
+            <div class="navbar-header">
+                <a class="brand-link" href="index.html"><img class="logo" src="imagenes/iconos/logo-desktop.svg" alt="logo"><img class="logoNoc" src="imagenes/iconos/logo-mobile-modo-noct.svg" alt="logo"> </a>
+                <a href="#navbar-header" class="open-close menu_open"><i class="fas fa-bars"></i></a>
+                <a href="#" class="open-close menu_close"><i class="fas fa-times"></i></a>
+            </div> 
+            <ul class="navbar-container"> 
+                <li><a id="boton_modoNoc" class="navbar-link mod_noc" href="#">Modo Nocturno</a></li> 
+                <li><span class="separador"></span></li>
+                <li><a class="navbar-link fav" href="favoritos.html">Favoritos</a></li>
+                <li><span class="separador"></span></li>
+                <li><a class="navbar-link" href="misGifos.html">Mis GIFOS</a></li>
+                <li><a href="mas.html"><i class="fas fa-plus"></i></a></li>
+            </ul>
+        </nav>  
+    </header>     
+    <main>
+        <section class="createGifo">
+            <div class="createGifo_iconCamaraConLuz" >
+                <img class="createGifo_iconCamara" src="imagenes/iconos/camara.svg" alt="camara">
+                <img class="createGifo_iconCamaraNoc" src="imagenes/iconos/camara-modo-noc.svg" alt="camara_noc">
+                <img class="createGifo_iconCamaraLuz" src="imagenes/iconos/element-luz-camara.svg" alt="luz de camara">
+            </div>
+            <div class="createGifo_videoArea">
+                <div class="acomodarOrillas">
+                    <div class="orillas orillas1"></div>
+                    <div class="orillas orillas2"></div>
+                    <div class="orillas orillas3"></div>
+                    <div class="orillas orillas4"></div>
+                    <div class="texto">
+                        <video id="video" class="video"></video>
+                        <!-- poner div de hover de gif grabado -->
+                        <div id="mostrarGif" class="mostrarGif"> 
+                            <div class="mostrarGif_imgContainer"> 
+                                <img class="mostrarGif_img" id="mostrarGif_img" src="imagenes/cat.jpg" alt="ended gif"  >
+                            </div>
+                            <div class="mostrarGif_hover" id="mostrarGif_hover"> 
+                                <div class="tarjeta_texto">
+                                    <div class="subiendoGifo" id="subiendoGifo">
+                                        <div class="donut"></div>
+                                        <p class="bold">Estamos subiendo tu GIFO</p>  
+                                    </div>
+                                    <div class="gifoCargado" id="gifoCargado">
+                                        <div class="tarjeta_icons">
+                                            <img class="icon descargar" id="descargarMas" src="imagenes/iconos/icon-download.svg" alt="descarga">
+                                            <img class="icon" id="urlMas" src="imagenes/iconos/icon-link-normal.svg" alt="link">
+                                        </div>
+                                        <i class="fas fa-check"></i>
+                                        <p class="boldCargado">GIFO subido con éxito</p>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="letrasVideo" class="SaludoVideo">
+                            <h2>Aquí podrás <br> crear tus propios <span>GIFOS</span></h2>
+                            <p>¡Crea tu GIFO en sólo 3 pasos! <br> (sólo necesitas una cámara para grabar un video)</p>
+                        </div>
+                        <div id="letrasPermiso" class="letrasPermiso">
+                            <h2>¿Nos das acceso <br> a tu cámara?</h2>
+                            <p>El acceso a tu camara será válido sólo <br> por el tiempo en el que estés creando el GIFO.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="createGifo_numbers" class="createGifo_numbers">
+                <div id="contNumbers" class="contNumbers">
+                    <button id="paso1" class="notSelected">1</button>
+                    <button id="paso2" class="notSelected">2</button>
+                    <button id="paso3" class="notSelected">3</button>
+                </div>
+                <p id="repCap" class="repCap">REPETIR CAPTURA</p>
+            </div>
+            <div class="acomodarSeparador">
+                <div class="createGifo_separador"></div>
+            </div>
+            <div class="acomodarCarrete">
+                <img class="createGifo_iconCarrete" src="imagenes/iconos/pelicula.svg" alt="carrete">
+                <img class="createGifo_iconCarreteNoc" src="imagenes/iconos/pelicula-modo-noc.svg" alt="carreteNoc">
+            </div>
+            <div class="acomodar_boton">
+                <button id="comenzar" class="createGifo_button">COMENZAR</button>
+                <button id="grabar" class="createGifo_button">GRABAR</button>
+                <button id="finalizar" class="createGifo_button">FINALIZAR</button>
+                <button id="subirGif" class="createGifo_button">SUBIR GIFO</button>
+            </div>
+        </section>
+        <footer>
+            <div class="footer_redes">
+                <p>Compartir en:</p>
+                <div class="icon_redes">
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <p class="footer_rights">© GIFOS 2020 All Rights Reserved.</p>
+        </footer>
+    </main> 
+
+    <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+    <script src="scripts/ModoNoc.js"></script>
+    <script src="scripts/mas.js"></script>
+    
+</body>
+</html>
