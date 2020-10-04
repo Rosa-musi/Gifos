@@ -3,21 +3,18 @@ const slider = document.getElementById('slider')
 function trending(){
     async function trendingGiphy() {
         const apikey = 't8p6p3sJzlMsg9EGCF7ynuBUk6YULEk1'
-        const url = `http://api.giphy.com/v1/gifs/trending?api_key=${apikey}&limit=12` //apy key con variable de búsqueda
-        const response = await fetch(url);  //me responde con el formato promesa
-        var result = await response.json();  // lo parseo a json
+        const url = `https://api.giphy.com/v1/gifs/trending?api_key=${apikey}&limit=12` 
+        const response = await fetch(url);  
+        var result = await response.json();  
         return result          
-                 //este return me dará el archivo que obtuve en formato json
     }
-    console.log(trendingGiphy())
-    let info = trendingGiphy();   //mi resultado de la búsqueda usando la función searchGiphy más el valor del input
-    let idDin = document.getElementsByClassName('DespCar').item(0); //getElementsBuClassName te regresa un HTML colection, es un objeto con todas las carácterísticas del tag donde está la clase, con "item(0)" accedo a las características y asi puedo sacar el id dinámico para cada div
+    let info = trendingGiphy();   
+    let idDin = document.getElementsByClassName('DespCar').item(0); 
     let idDin2 = idDin.id
-    info.then(json => {                          //un then para poner en pantalla los resultados si todo salió bien
+    info.then(json => {                         
         var resultsHTML = ' '
  
         json.data.forEach(gif => {
-            console.log(gif.images.original.url)
             const url = gif.images.original.url
             const title = gif.title
             resultsHTML += `
@@ -41,9 +38,9 @@ function trending(){
         slider.innerHTML = resultsHTML
         })
        
-    }).catch(error => {                           //catch por si hay algún error del servidor
+    }).catch(error => {                           
         console.log(error)
     })
 }
 
-trending() 
+trending()  
