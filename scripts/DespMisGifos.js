@@ -1,11 +1,8 @@
 
-//cambiar todo esto de acuerdo a los nuevos ids
-
-
-const MisGifosContent = document.getElementById('toldYa'); //cambiar clase para desplegar resultados
-const btnMisGifos = document.getElementById('verMasMisGifos'); //botón de ver más
-let favMisGifos = localStorage.getItem('MisGifos');   //obtener los datos del local storage
-let dataMisGifos = JSON.parse(favMisGifos)  //parsear la información a formato json
+const MisGifosContent = document.getElementById('toldYa'); 
+const btnMisGifos = document.getElementById('verMasMisGifos'); 
+let favMisGifos = localStorage.getItem('MisGifos'); 
+let dataMisGifos = JSON.parse(favMisGifos) 
 const descargaMisGifos = document.getElementById('maxDescMisGifos')
 let limiteMinimoMG = 0
 let limiteMaximoMG = 12
@@ -21,7 +18,6 @@ function mostFavMisGifos(clase, btnVerMas, datosLocalS){
         if (datosLocalS.length <= 12) {
             clase.className = "otro";
             datosLocalS.forEach(url => {
-            console.log(url)
                 resultsHTML += `
                 <div class="box2"> 
                     <div class="imgBox"> 
@@ -42,7 +38,6 @@ function mostFavMisGifos(clase, btnVerMas, datosLocalS){
             btnVerMas.style.display = "flex";
             let cortoArray = datosLocalS.slice(0,12);
             cortoArray.forEach(url => {
-                console.log(url)
                     resultsHTML += `
                     <div class="box2"> 
                         <div class="imgBox"> 
@@ -64,11 +59,6 @@ function mostFavMisGifos(clase, btnVerMas, datosLocalS){
 }
 
 
-
-
-
-//misGifos
-
 function desplegarMisGifs(esteNodo){
     let closeF = document.getElementById('closeMisG')
     let divDesplegarFav = document.getElementById('misGifosDesplegarID')
@@ -77,8 +67,6 @@ function desplegarMisGifs(esteNodo){
     let maxDesc = document.getElementById('maxDescMisGifos');
     let maxBorrar = document.getElementById('maxBorrarMisGifos');
 
-
-    console.log(url)
     imgMax.src = url;
     divDesplegarFav.style.display = "flex"
     closeF.addEventListener('click', () =>{
@@ -89,24 +77,20 @@ function desplegarMisGifs(esteNodo){
         downloadCreatedGif(url)
     })
     const index = dataMisGifos.findIndex(number => number === url)
-    console.log(index)
     maxBorrar.addEventListener('click', ()=>{
-        console.log(index)
     
         let old_data = JSON.parse(localStorage.getItem('MisGifos'));
-       
         old_data.splice(index, 1);
-    
         localStorage.setItem('MisGifos', JSON.stringify(old_data));  
     }) 
 
 }
 
-//misGifos mobil
+
 
 function maxMobMisG(esteNodo) {
 
-    esteNodo.addEventListener('click', () =>{ //cambiar por evento touch
+    esteNodo.addEventListener('click', () =>{ 
 
         let closeF = document.getElementById('closeMisG')
         let divDesplegarFav = document.getElementById('misGifosDesplegarID')
@@ -115,7 +99,6 @@ function maxMobMisG(esteNodo) {
         let maxDesc = document.getElementById('maxDescMisGifos');
         let maxBorrar = document.getElementById('maxBorrarMisGifos');
         
-        console.log(url)
         imgMax.src = url;
         divDesplegarFav.style.display = "flex"
         closeF.addEventListener('click', () =>{
@@ -128,17 +111,11 @@ function maxMobMisG(esteNodo) {
 
         const index = dataMisGifos.findIndex(number => number === url)
         maxBorrar.addEventListener('click', ()=>{
-            console.log(index)
             let new_data = index;
-        
             let old_data = JSON.parse(localStorage.getItem('MisGifos'));
-        
             old_data.splice(new_data, 1);
-        
             localStorage.setItem('MisGifos', JSON.stringify(old_data));  
          })
-
-        
     })
 } 
 
@@ -147,23 +124,16 @@ function maxMobMisG(esteNodo) {
 function borrarMiGif(esteNodo){
     let url = esteNodo.getAttribute("data-gif-id");
     let old_data = JSON.parse(localStorage.getItem('MisGifos'));
-
-
-    
     const index = old_data.findIndex(number => number === url)
-
     let new_data = index;
 
-     
     old_data.splice(new_data, 1);
-
     localStorage.setItem('MisGifos', JSON.stringify(old_data));    
 
 }
 
 function SinContenidoMisGifos (){
     let old_data = JSON.parse(localStorage.getItem('MisGifos'));
-    console.log(old_data.length)
     if (old_data.length == 0){
         MisGifosContent.className = "misGifos_images";
     }
@@ -172,14 +142,12 @@ function SinContenidoMisGifos (){
 SinContenidoMisGifos()
 
 
-
 btnMisGifos.addEventListener('click', ()=>{
     limiteMinimoMG = limiteMinimoMG + 12;
     limiteMaximoMG = limiteMaximoMG + 12;
     desplegarBtnVerMasMG()
 }) 
 
-//Desplegar con el botón ver más
 
 function desplegarBtnVerMasMG (){
     MisGifosContent.className = "otro";
