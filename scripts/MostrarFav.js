@@ -1,8 +1,8 @@
 
-var FavContent = document.getElementById('favoritos_images'); //cambiar clase para desplegar resultados
-const verMasFavoritos = document.getElementById('verMasFavoritos'); //botón de ver más
-let fav = localStorage.getItem('data');   //obtener los datos del local storage
-let dataF = JSON.parse(fav)  //parsear la información a formato json
+var FavContent = document.getElementById('favoritos_images');
+const verMasFavoritos = document.getElementById('verMasFavoritos');
+let fav = localStorage.getItem('data');   
+let dataF = JSON.parse(fav)  
 let limiteMinimo = 0
 let limiteMaximo = 12
 
@@ -14,7 +14,6 @@ function mostFav(clase, btnVerMas, datosLocalS){
 
         if (datosLocalS.length <= 12) {
             datosLocalS.forEach(url => {
-            console.log(url)
                 resultsHTML += `
                 <div class="box2"> 
                     <div class="imgBox"> 
@@ -35,7 +34,6 @@ function mostFav(clase, btnVerMas, datosLocalS){
             btnVerMas.style.display = "flex";
             let cortoArray = datosLocalS.slice(0,12);
             cortoArray.forEach(url => {
-                console.log(url)
                     resultsHTML += `
                     <div class="box2"> 
                         <div class="imgBox"> 
@@ -68,7 +66,7 @@ verMasFavoritos.addEventListener('click', ()=>{
     desplegarBtnVerMasFav()
 }) 
 
-//Desplegar con el botón ver más
+
 
 function desplegarBtnVerMasFav (){
     FavContent.className = "otro";
