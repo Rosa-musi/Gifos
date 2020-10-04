@@ -9,13 +9,11 @@ const divSugerencias = document.getElementById('divSugerencias');
 searchInput.addEventListener('keyup', buscadorActivo);
 function buscadorActivo() {
     busqueda = searchInput.value;
-    /* Modificación de estilos -> Buscador pasa a estado ACTIVO */
     divBusqueda.classList.remove('titleSearcher_searcher');
     divBusqueda.classList.add('titleSearcher_searchActive');
     iconBuscar.style.display = "none";
     btnCerrarBusqueda.style.display = "block";
     lupaBusquedaActiva.style.display = "flex";
-    /* Traigo SUGERENCIAS de términos desde la API */
     if (busqueda.length >= 1) {
         async function sug () {
             const url = `https://api.giphy.com/v1/tags/related/${busqueda}?api_key=${apikey}&limit=4`
@@ -68,11 +66,10 @@ function cerrarBoxBusqueda () {
     btnCerrarBusqueda.style.display = "none";
 } 
 
-/* BÚSQUEDA Cerrada */
 btnCerrarBusqueda.addEventListener('click', limpiarBusqueda);
-/* CLEAR del input y reset de estilos */
+
 function limpiarBusqueda() {
-    searchInput.value = "";  //esto no funciona si mi función cerrarBoxBusqueda está mal 
+    searchInput.value = "";  
     divBusqueda.classList.add('titleSearcher_searcher');
     divBusqueda.classList.remove('titleSearcher_searchActive');
     divSugerencias.innerHTML = " "
@@ -80,10 +77,8 @@ function limpiarBusqueda() {
     btnCerrarBusqueda.style.display = "none";
 }
 
-//Botón de búsqueda y enter para buscar
+
 divSugerencias.addEventListener('click', function (li) {
     searchInput.value = li.target.textContent;
     search();
 })
-
-
