@@ -1,4 +1,3 @@
-
  let close = document.getElementById('close');
  let divDesplegar = document.getElementById('desplegarID')
  let imgMax = document.getElementById('img_max')
@@ -6,14 +5,11 @@
  
 
 
-//favoritos
-
 function desplegarFav(esteNodo){
     let closeF = document.getElementById('closeF')
     let divDesplegarFav = document.getElementById('favDesplegarID')
     let url = esteNodo.getAttribute("data-gif-url");
     let title = esteNodo.getAttribute("data-gif-title");
-    console.log(url)
     imgMax.src = url;
     tituloMax.innerText = title
     divDesplegarFav.style.display = "flex"
@@ -41,25 +37,19 @@ function desplegarFav(esteNodo){
 
     maxDesc.addEventListener('click', ()=>{
         let url = maxImg
-        console.log("hola")
-        console.log(url)
         downloadCreatedGif(url)
     })
-
-
 }
 
-//favoritos mobil
 
 function maxFavMob (esteNodo) {
 
-    esteNodo.addEventListener('click', () =>{ //cambiar por evento touch
+    esteNodo.addEventListener('click', () =>{ 
         let closeF = document.getElementById('closeF')
         let divDesplegarFav = document.getElementById('favDesplegarID')
         let title = esteNodo.getAttribute("data-gif-title");
         let url = esteNodo.getAttribute("src");
 
-        console.log(url)
         imgMax.src = url;
         tituloMax.innerText = title
         divDesplegarFav.style.display = "flex"
@@ -85,20 +75,16 @@ function maxFavMob (esteNodo) {
 
         maxDesc.addEventListener('click', ()=>{
             let url = maxImg
-            console.log("hola")
-            console.log(url)
             downloadCreatedGif(url)
         })
     })
 } 
 
-//carrusel
 
 function desplegarFavC(esteNodo){
 
     let url = esteNodo.getAttribute("data-gif-url");
     let title = esteNodo.getAttribute("alt");
-    console.log(title)
     var resultsHTML = ' '
     let index = document.getElementById("aLlorar")
     let favoritos = document.getElementById("aLlorar1")
@@ -137,15 +123,11 @@ function desplegarFavC(esteNodo){
 
 
 
-
-//carrusel mobil
-
 function maxCarMob(esteNodo) {
     
-    esteNodo.addEventListener('click', () =>{ //cambiar por evento touch
+    esteNodo.addEventListener('click', () =>{ 
         let url = esteNodo.getAttribute("src");
         let title = esteNodo.getAttribute("alt");
-        
         var resultsHTML = ' '
         let index = document.getElementById("aLlorar")
         let favoritos = document.getElementById("aLlorar1")
