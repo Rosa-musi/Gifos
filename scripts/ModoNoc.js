@@ -2,7 +2,6 @@ const btnSwitch = document.querySelector('#boton_modoNoc');
 
 btnSwitch.addEventListener('click', () => {
     document.body.classList.toggle('dark');
-    // Guardamso el modo en localstorage.
     if(document.body.classList.contains('dark')){
         localStorage.setItem('dark-mode', 'true');
     }else{
@@ -15,7 +14,7 @@ btnSwitch.addEventListener('click', () => {
     }
 });
 
-// Obtenemos el modo actual.
+
 if(localStorage.getItem('dark-mode') === 'true'){
     document.body.classList.add('dark');
     btnSwitch.textContent = "Modo Diurno"
@@ -23,4 +22,3 @@ if(localStorage.getItem('dark-mode') === 'true'){
     document.body.classList.remove('dark');
     btnSwitch.textContent = "Modo Nocturno"
 }
-
