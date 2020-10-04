@@ -1,4 +1,4 @@
-//Variables
+
 const navSearch = document.getElementById('titleSearcher_searcherNav');
 const verMasNavBar = document.getElementById('verMasNavBar');
 let offsetBar = 0
@@ -18,13 +18,13 @@ const searchIconNav = document.getElementById('lupaBusquedaNav')
 const searchInputNav = document.getElementById('search-inputNav')
 
 
-//Búsqueda con ícono de buscar
+
 searchIconNav.addEventListener('click', function(){ 
     var q = searchInputNav.value
     search3(q)
 }) 
 
-//Búsqueda con el enter
+
 searchInputNav.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) {
         e.preventDefault()
@@ -35,25 +35,21 @@ searchInputNav.addEventListener('keyup', function(e) {
 
 function search3(){
     async function searchGiphy(q) {
-        const url = `http://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}&limit=12&offset=${offset}` //apy key con variable de búsqueda
-        const response = await fetch(url);  //me responde con el formato promesa
-        var result = await response.json();  // lo parseo a json
-        tittleSearcher.innerHTML = searchInputNav.value //cambio el valor del título de las búsquedas
+        const url = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}&limit=12&offset=${offset}` 
+        const response = await fetch(url);  
+        var result = await response.json();  
+        tittleSearcher.innerHTML = searchInputNav.value 
         separador.style.display = "flex"
-        return result                                //este return me dará el archivo que obtuve en formato json
+        return result                                
     }
-    console.log(searchGiphy())
-    let info = searchGiphy(searchInputNav.value);   //mi resultado de la búsqueda usando la función searchGiphy más el valor del input
-    info.then(json => {                          //un then para poner en pantalla los resultados si todo salió bien
+    verMasIndex.style.display = "none";
+    let info = searchGiphy(searchInputNav.value);   
+    info.then(json => {                         
         var resultsHTML = ' '
- 
         json.data.forEach(gif => {
-            console.log(gif.images.original.url)
             const url = gif.images.original.url
             const title = gif.title  
-            
             resultsHTML += `
-
             <div class= "box2"> 
                 <div class="imgBox"> 
                     <img  onclick="maxBuscMob(this)" src="${url}" alt="${title}">
@@ -83,7 +79,7 @@ function search3(){
             `
         }
         verMasNavBar.style.display = "flex"
-    }).catch(error => {                           //catch por si hay algún error del servidor
+    }).catch(error => {                           
         console.log(error)
     })
     
@@ -91,7 +87,7 @@ function search3(){
 
 
 
-verMasNavBar.addEventListener('click', function(e){ //aquí no tenemos que obtener el id del botón porque con el evento submit lo hace por defecto
+verMasNavBar.addEventListener('click', function(e){ 
     e.preventDefault()
     var q = searchInputNav.value
     offsetBar = offsetBar + 12
@@ -102,25 +98,21 @@ verMasNavBar.addEventListener('click', function(e){ //aquí no tenemos que obten
 
 function searchMas3(){
     async function searchGiphy(q) {
-        const url = `http://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}&limit=${limitBar}&offset=${offsetBar}` //apy key con variable de búsqueda
-        const response = await fetch(url);  //me responde con el formato promesa
-        var result = await response.json();  // lo parseo a json
-        tittleSearcher.innerHTML = searchInputNav.value //cambio el valor del título de las búsquedas
+        const url = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}&limit=${limitBar}&offset=${offsetBar}` 
+        const response = await fetch(url);  
+        var result = await response.json();  
+        tittleSearcher.innerHTML = searchInputNav.value 
         separador.style.display = "flex"
-        return result                                //este return me dará el archivo que obtuve en formato json
+        return result                               
     }
     console.log(searchGiphy())
-    let info = searchGiphy(searchInputNav.value);   //mi resultado de la búsqueda usando la función searchGiphy más el valor del input
-    info.then(json => {                          //un then para poner en pantalla los resultados si todo salió bien
+    let info = searchGiphy(searchInputNav.value);   
+    info.then(json => {                       
         var resultsHTML = ' '
- 
         json.data.forEach(gif => {
-            console.log(gif.images.original.url)
             const url = gif.images.original.url
             const title = gif.title  
-            
             resultsHTML += `
-
             <div class= "box2"> 
                 <div class="imgBox"> 
                     <img  onclick="maxBuscMob(this)" src="${url}" alt="${title}">
@@ -151,7 +143,7 @@ function searchMas3(){
             verMasNavBar.style.display = "none"
         }
         
-    }).catch(error => {                           //catch por si hay algún error del servidor
+    }).catch(error => {                           
         console.log(error)
     })
     
