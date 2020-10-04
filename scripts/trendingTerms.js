@@ -7,19 +7,17 @@ let limitTerms = 12
 function trendingTerms(){
     async function getTrendingTerms() {
         const apikey = 't8p6p3sJzlMsg9EGCF7ynuBUk6YULEk1'
-        const url = `http://api.giphy.com/v1/trending/searches?api_key=${apikey}` //apy key con variable de búsqueda
-        const response = await fetch(url);  //me responde con el formato promesa
-        var result = await response.json();  // lo parseo a json
-        return result                   //este return me dará el archivo que obtuve en formato json
+        const url = `https://api.giphy.com/v1/trending/searches?api_key=${apikey}` 
+        const response = await fetch(url);  
+        var result = await response.json(); 
+        return result                 
     }
     console.log(getTrendingTerms())
-    let info = getTrendingTerms();   //mi resultado de la búsqueda usando la función searchGiphy más el valor del input
+    let info = getTrendingTerms();  
     info.then(json => {     
         let array = json.data                   
         let cortar = array.slice(0,5);
-        console.log(cortar)
         let resultsHTML = ' '
-
         resultsHTML += `
         <p onclick="search2(this)" class="wordTrend" data-word=${cortar[0]}> ${cortar[0]}, </p>
         <p onclick="search2(this)" class="wordTrend" data-word=${cortar[1]}> ${cortar[1]}, </p>
@@ -29,9 +27,7 @@ function trendingTerms(){
         
         `
         contenedor.innerHTML = resultsHTML
-        
-        
-    }).catch(error => {                           //catch por si hay algún error del servidor
+    }).catch(error => {              
         console.log(error)
     }) 
 }
@@ -41,29 +37,22 @@ trendingTerms()
 function search2(dep){
     async function searchGiphy(q) {
         const apikey = 't8p6p3sJzlMsg9EGCF7ynuBUk6YULEk1'
-        const url = `http://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}&limit=${limitTerms}&offset=${offsetTerms}` //apy key con variable de búsqueda
-        const response = await fetch(url);  //me responde con el formato promesa
-        var result = await response.json();  // lo parseo a json
+        const url = `https://api.giphy.com/v1/gifs/search?api_key=${apikey}&q=${q}&limit=${limitTerms}&offset=${offsetTerms}` 
+        const response = await fetch(url);  
+        var result = await response.json();  
         let busqueda = dep.getAttribute("data-word");
         tittleSearcher.innerHTML = busqueda
         separador.style.display = "flex"
-        return result                                //este return me dará el archivo que obtuve en formato json
+        return result                                
     }
-    console.log(searchGiphy())
     let busquedas = dep.getAttribute("data-word");
-    console.log(busquedas)
-    let info = searchGiphy(busquedas);
-    console.log(info)   //mi resultado de la búsqueda usando la función searchGiphy más el valor del input
-    info.then(json => {                          //un then para poner en pantalla los resultados si todo salió bien
+    let info = searchGiphy(busquedas);  
+    info.then(json => {                          
         var resultsHTML = ' '
- 
         json.data.forEach(gif => {
-            console.log(gif.images.original.url)
             const url = gif.images.original.url
-            const title = gif.title
-                    
+            const title = gif.title 
             resultsHTML += `
-
             <div class= "box2"> 
                 <div class="imgBox"> 
                     <img onclick="maxCarMob(this)" src="${url}" alt="${title}">
@@ -80,21 +69,18 @@ function search2(dep){
                 </div>
             </div>
             `
-            
             resultsEl.innerHTML = resultsHTML
-           
         })
         verMasIndex.style.display = "flex"
-    }).catch(error => {                           //catch por si hay algún error del servidor
+    }).catch(error => {                           
         console.log(error)
     })
     
 }
-
 
 contenedor.addEventListener('click', function (p) {
     searchInput.value = p.target.textContent;
     offsetTerms = offsetTerms + 12;
     limitTerms = limitTerms + 12;
     search2();
-}) 
+})
