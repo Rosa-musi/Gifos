@@ -18,7 +18,6 @@ const descargarMas = document.getElementById('descargarMas');
 const paso1 = document.getElementById('paso1');
 const paso2 = document.getElementById('paso2');
 const paso3 = document.getElementById('paso3');
-
 const apikey = 't8p6p3sJzlMsg9EGCF7ynuBUk6YULEk1';
 
 async function initiateWebcam() {
@@ -49,8 +48,6 @@ async function initiateWebcam() {
             height: 320,
             width: 480
         });
-        
-        //método de la librería para grabar
         await gifRecorder.startRecording();
     }
 
@@ -64,13 +61,12 @@ async function initiateWebcam() {
     async function stopRecordings(){
         await gifRecorder.stopRecording();
         var blob = await gifRecorder.getBlob();
-        var blobGuardar = URL.createObjectURL(blob);  //hacer función para guardar en local storage
+        var blobGuardar = URL.createObjectURL(blob);  
         video.style.display = "none";
-        //apagar cámara
         stream.stop();
 
-        mostrarGifGrabado.style.display = "flex"; //poner en pantalla en gif grabado
-        gifG.src = blobGuardar //hacer una función en stoprecording para traerlo desde ahí
+        mostrarGifGrabado.style.display = "flex"; 
+        gifG.src = blobGuardar 
 
 
         async function uploadCreatedGif(){
@@ -81,9 +77,8 @@ async function initiateWebcam() {
                 body: formData,
                 json: true
             };
-            const dataGif = await fetchURL(`http://upload.giphy.com/v1/gifs?api_key=${apikey}`, params);
+            const dataGif = await fetchURL(`https://upload.giphy.com/v1/gifs?api_key=${apikey}`, params);
             console.log(await dataGif);
-            
             let id = dataGif.data.id
             let msg = dataGif.meta.msg
             let link = `https://media3.giphy.com/media/${id}/giphy.gif?cid=0abcc9646hfbypznn11zmcey8x9ql7cbcujsjmrrwdytucun&rid=giphy.gifhttps://media3.giphy.com/media//giphy.gif?cid=0abcc9646hfbypznn11zmcey8x9ql7cbcujsjmrrwdytucun&rid=giphy.gifhttps://media3.giphy.com/media//giphy.gif?cid=0abcc9646hfbypznn11zmcey8x9ql7cbcujsjmrrwdytucun&rid=giphy.gif`
@@ -127,24 +122,6 @@ async function initiateWebcam() {
         mostrarGifGrabado.style.display = "none";
         subirGif.style.display = "none";
         initiateWebcam()
-/*         subirGif.style.display = "none"; // poner boton de subir gif
-        mostrarGifGrabado.style.display = "none"; // quitar pantalla donde se muestra el gif grabado que se quiere desechar
-        async function DeNuevo(){
-            const stream = await navigator.mediaDevices.getUserMedia({
-                audio: false,
-                video: {
-                    height: 320,
-                    width: 480
-                }
-            });
-            video.srcObject = stream;
-            video.play();
-            letrasPermiso.style.display = "none";
-            video.style.display = "flex";
-            comenzar.style.display = "none"
-            grabar.style.display = "flex"
-        }
-        DeNuevo() */
     })
      
 }
@@ -178,18 +155,6 @@ function addToMyGifos(gifUrl){
         localStorage.setItem('MisGifos', '[]');
     }
     let old_data = JSON.parse(localStorage.getItem('MisGifos'));
-   
     old_data.push(new_data);
-
     localStorage.setItem('MisGifos', JSON.stringify(old_data));  
 }
-
-
-/* 
-mas.html:1 Access to fetch at 'https://upload.giphy.com/v1/gifs?api_key=t8p6p3sJzlMsg9EGCF7ynuBUk6YULEk1'
-(redirected from 'http://upload.giphy.com/v1/gifs?api_key=t8p6p3sJzlMsg9EGCF7ynuBUk6YULEk1') 
- origin 'http://127.0.0.1:5507' 
- has been blocked by CORS policy: No 'Access-Control-Allow-Origin'
-  header is present on the requested resource. 
-  If an opaque response serves your needs, set the request's mode to 'no-cors'
-   to fetch the resource with CORS disabled. */
