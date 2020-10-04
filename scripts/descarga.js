@@ -1,8 +1,5 @@
-
-
 function descarga() {
     descarga = document.getElementsByClassName('descargar');
-    console.log(descarga)
 
    for (boton of descarga){
         boton.addEventListener('click', () =>{
@@ -15,7 +12,7 @@ function descarga() {
 
 
 
-//sólo necesito saber cómo descargar
+
 
 function descargaOnClick(este){
     url = este.getAttribute("data-gif-id");
@@ -36,4 +33,3 @@ async function downloadCreatedGif(url){
     saveImg.click();
     document.body.removeChild(saveImg);
 }
-
